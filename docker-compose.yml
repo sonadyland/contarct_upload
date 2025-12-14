@@ -1,0 +1,14 @@
+services:
+  contract-upload:
+    build: .
+    image: contract-upload:latest
+    ports:
+      - "18013:18013"
+    environment:
+      - DATABASE_URL=sqlite:////app/data/contracts.db
+    volumes:
+      - contract_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  contract_data:
